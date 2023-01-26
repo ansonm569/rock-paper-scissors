@@ -17,11 +17,22 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     // take two inputs and determine victor or tie
-    console.log(playerSelection.toLowerCase());
-}
+    let pClean = (playerSelection.toLowerCase());
+    if (pClean == computerSelection) {
+        return ("Tie game!");
+    }
+    else if ((pClean == "rock" && computerSelection == "scissors") || 
+    (pClean == "paper" && computerSelection == "rock") || (pClean == "scissors" && computerSelection == "paper"))  {
+        return (`You win! ${pClean.charAt(0).toUpperCase() + pClean.slice(1)} beats ${computerSelection}.`);
+    }
+    else {
+        return (`You lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${pClean}.`)
+    }
+    }
 
-playRound("RoCK",getComputerChoice);
+const computerSelection = getComputerChoice();
+const playerSelection = "rock";
+console.log(playRound(playerSelection, computerSelection));
 
-getComputerChoice();
 
 //more elsewhere
