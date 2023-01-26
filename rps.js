@@ -8,13 +8,19 @@
 
 
 function getComputerChoice() {
-    //random selection
-    var rps = ['Rock', 'Paper', 'Scissors'];
+    // computer random selection and return
+    var rps = ['rock', 'paper', 'scissors'];
     let i = Math.floor(Math.random()*3);
-    let compSelection = rps[i];
-    console.log(compSelection);
-    return compSelection;
+    console.log(rps[i]);
+    return rps[i];
 }
+
+function playRound(playerSelection, computerSelection) {
+    // take two inputs and determine victor or tie
+    console.log(playerSelection.toLowerCase());
+}
+
+playRound("RoCK",getComputerChoice);
 
 getComputerChoice();
 
