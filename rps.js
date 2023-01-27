@@ -1,15 +1,6 @@
-
-
-// create function called "GetComputerChoice" that randomly selects rock paper or scissors
-// write a function that plays a single round or RPS
-//     Function should should take playerSelection and computerSelection as parameters
-//     Return stringg that delcares the winner / outcome
-//     Make sure player selection is case-insensitive 
-
 const win = "You win!";
 const lose = "You lose!";
 const tie = "Tie!";
-const computerSelection = getComputerChoice();
 var computerScoreTracker = 0;
 var playerScoreTracker = 0;
 let rounds = prompt("How many rounds would you like to play? (Between 1 and 5)");
@@ -19,6 +10,7 @@ while (rounds < 0 || rounds > 5) {
 }
 
 for (let i = 0; i < rounds; i++) {
+    let computerSelection = getComputerChoice();
     playerSelection = prompt("Rock, paper, or scissors?");
     var outcome = playRound(playerSelection, computerSelection);
     console.log(outcome);
@@ -29,7 +21,7 @@ for (let i = 0; i < rounds; i++) {
 
 console.log(scoreSummary);
 finalScoreCheck(playerScoreTracker, computerScoreTracker);
-
+gameReset(confirm("Would you like to try again?"));
 
 // Functions - Break
 
@@ -89,4 +81,8 @@ function scoreTracker (outcome) {
     else {
         return
     }
+}
+
+function gameReset(reset) {
+    (reset == true) ? location.reload() : null;
 }
