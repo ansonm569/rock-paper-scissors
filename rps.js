@@ -8,7 +8,31 @@
 
 const win = "You win!";
 const lose = "You lose!";
-const tie = "Tie game!";
+const tie = "Tie!";
+const computerSelection = getComputerChoice();
+var computerScoreTracker = 0;
+var playerScoreTracker = 0;
+let rounds = prompt("How many rounds would you like to play? (Between 1 and 5)");
+
+while (rounds < 0 || rounds > 5) {
+    rounds = prompt("Error: Please enter a number of rounds between 1 and 5.");
+}
+
+for (let i = 0; i < rounds; i++) {
+    playerSelection = prompt("Rock, paper, or scissors?");
+    var outcome = playRound(playerSelection, computerSelection);
+    console.log(outcome);
+    scoreTracker(outcome);
+    var scoreSummary = (`Score: Player (${playerScoreTracker}) | Computer (${computerScoreTracker})`);
+    console.log(scoreSummary);
+}
+
+console.log(scoreSummary);
+finalScoreCheck(playerScoreTracker, computerScoreTracker);
+
+
+// Functions - Break
+
 
 function getComputerChoice() {
     // computer random selection and return
@@ -38,20 +62,31 @@ function playRound(playerSelection, computerSelection) {
     }
     }
 
-const computerSelection = getComputerChoice();
-
-for (let i = 0; i < 5; i++) {
-    playerSelection = prompt("Rock, paper, or scissors?");
-    let computerScoreTracker = 0;
-    let playerScoreTracker = 0;
-    if (playRound(playerSelection, computerSelection) == win) {
-        computerScoreTracker++;
+function finalScoreCheck(playerScoreTracker, computerScoreTracker) {
+    if (playerScoreTracker > computerScoreTracker) {
+    console.log(`You win the game of ${rounds} round(s)!`);
     }
-    else if (playRound(playerSelection, computerSelection) == lose) {
-        playerScoreTracker--
+    else if (computerScoreTracker > playerScoreTracker) {
+        console.log(`You lose the game of ${rounds} round(s).`);
     }
-
+    else {
+        console.log(`You and the computer tied in a game of ${rounds} round(s).`);
+    }
 }
 
-
-//more elsewhere
+function scoreTracker (outcome) {
+    if (outcome == win) {
+        playerScoreTracker++;
+        return
+    }
+    else if (outcome == lose) {
+        computerScoreTracker++
+        return lose;
+    }
+    else if (outcome == tie) {
+        return tie
+    }
+    else {
+        return
+    }
+}
